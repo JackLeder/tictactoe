@@ -5,6 +5,7 @@ public class tictactoe {
     private static final int ROWS = 3;
     private static final int COLS = 3;
     private static String board [][] = new String[ROWS][COLS];
+    private static int moveCount = 0;
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -20,17 +21,20 @@ public class tictactoe {
 
 
             while (!validp1check) {
-                int pl1col1 = safeinput.getRangedInt(in, "Player 1, enter column (0-2)", 0, 2);
-                int pl1row1 = safeinput.getRangedInt(in, "Player 1, enter row (0-2)", 0, 2);
+                int pl1row1 = safeinput.getRangedInt(in, "Player 1, enter row (1-3)", 1, 3) - 1;
+                int pl1col1 = safeinput.getRangedInt(in, "Player 1, enter column (1-3)", 1, 3) - 1;
+
                 if (isValidMove(pl1row1, pl1col1)) {
                     board[pl1row1][pl1col1] = "X";
+                    moveCount++;
                     validp1check = true;
                 }
             }
 
             if (isWin("X")) {
                 display();
-                System.out.println("Player ! wins!");
+                System.out.println("Player 1 wins!");
+                System.out.println("total move count: " + moveCount);
 
                 boolean playagain = safeinput.getYNConfirm(in, "Do you want to play again?");
                 if(playagain){
@@ -44,6 +48,7 @@ public class tictactoe {
             }else if(isTie()){
                 display();
                 System.out.println("It's a tie!");
+                System.out.println("total move count: " + moveCount);
 
                 boolean playagain = safeinput.getYNConfirm(in, "Do you want to play again?");
                 if(playagain){
@@ -62,11 +67,14 @@ public class tictactoe {
 
 
             while (!validp2check) {
-                int pl1col2 = safeinput.getRangedInt(in, "Player 2, enter column (0-2)", 0, 2);
-                int pl1row2 = safeinput.getRangedInt(in, "Player 2, enter row (0-2)", 0, 2);
+                int pl1row2 = safeinput.getRangedInt(in, "Player 2, enter row (1-3)", 1, 3) - 1;
+                int pl1col2 = safeinput.getRangedInt(in, "Player 2, enter column (1-3)", 1, 3) - 1;
+
                 if (isValidMove(pl1row2, pl1col2)) {
                     board[pl1row2][pl1col2] = "O";
+                    moveCount++;
                     validp2check = true;
+
                 }
             }
 
@@ -74,6 +82,7 @@ public class tictactoe {
             if (isWin("O")) {
                 display();
                 System.out.println("Player 2 wins!");
+                System.out.println("total move count: " + moveCount);
 
                 boolean playagain = safeinput.getYNConfirm(in, "Do you want to play again?");
                 if(playagain){
@@ -88,6 +97,7 @@ public class tictactoe {
             }else if(isTie()){
                 display();
                 System.out.println("It's a tie!");
+                System.out.println("total move count: " + moveCount);
 
                 boolean playagain = safeinput.getYNConfirm(in, "Do you want to play again?");
                 if(playagain){
