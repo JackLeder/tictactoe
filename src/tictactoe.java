@@ -217,12 +217,12 @@ public class tictactoe {
         if (diagonal1.contains("X") && diagonal1.contains("O")) earlytie++;
         if (diagonal2.contains("X") && diagonal2.contains("O")) earlytie++;
 
-        // If all 8 win-vectors are eliminated, it's an early tie
+
         if (earlytie == 8) {
             return true;
         }
 
-        // Otherwise fall back to full-board check
+
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 if (board[i][j].equals(" ")) {
